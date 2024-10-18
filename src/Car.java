@@ -1,51 +1,68 @@
 //1. Design and implement an interface named "Vehicle" that includes methods for retrieving the vehicle's make, model, and year of manufacture.
 // 2. Develop a class named "Car" that implements the Vehicle and "CarVehicle" interfaces. This interface includes additional methods for setting and retrieving the number of doors and the fuel type (petrol, diesel, or electric).
 
-interface CarVehicle extends Main.Vehicle {
-    int getDoors();
-    int setDoors(int doors);
-    String getFuelType();
-    int setFuelType(int fuelType);
-}
 
-public class Car implements CarVehicle {
+public class Car implements Vehicle.vehicle, Vehicle.CarVehicle  {
+    private String make;
+    private String model;
+    private int year;
     private int doors;
     private String fuelType;
 
-    public Car(int doors, String fuelType) {
+    public Car (String model, String make, int year, int doors, String fuelType) {
+        this.model = model;
+        this.make = make;
+        this.year = year;
         this.doors = doors;
         this.fuelType = fuelType;
     }
-    public int getDoors() {
+
+    public void setYear(int year){
+        this.year = year;
+    }
+
+    public void setMake(String make){
+        this.make = make;
+    }
+    public void setModel(String model){
+        this.model = model;
+    }
+
+
+    @Override
+    public void setNumberOfDoors(int doors) {
+        this.doors = doors;
+    }
+
+    @Override
+    public int getNumberOfDoors() {
         return doors;
     }
 
     @Override
-    public int setDoors(int doors) {
-        return 0;
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
     }
 
     public String getFuelType() {
         return fuelType;
     }
 
-    @Override
-    public int setFuelType(int fuelType) {
-        return 0;
-    }
 
     @Override
     public String getMake() {
-        return "";
+        return make;
     }
 
     @Override
     public String getModel() {
-        return "";
+        return model;
     }
 
     @Override
     public int getYear() {
-        return 0;
+        return year;
     }
+
+
 }
